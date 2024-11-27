@@ -1,0 +1,59 @@
+CREATE DATABASE IF NOT EXISTS Escola2;
+USE Escola;
+
+CREATE TABLE IF NOT EXISTS Alunos (
+ID_Alunos INT AUTO_INCREMENT PRIMARY KEY,
+Nome VARCHAR(100) NOT NULL,
+Data_Nascimento DATE
+);
+
+INSERT INTO Alunos (Nome, Data_Nascimento)
+VALUES 
+('Christina', '2007/09/22'),
+('Gael', '2007/01/16'),
+('Vanessa', '2003/11/11');
+
+CREATE TABLE IF NOT EXISTS Professor (
+ID_Professor INT AUTO_INCREMENT PRIMARY KEY,
+Nome_Professor VARCHAR(100) NOT NULL,
+Diciplina VARCHAR(50)
+);
+
+INSERT INTO Professor (Nome_Professor, Diciplina)
+VALUES
+('Rodrigo', 'Portugês'),
+('Claúdio', 'Matemática'),
+('Marcela', 'Biologia');
+
+CREATE TABLE IF NOT EXISTS Turma (
+ID_Turma INT AUTO_INCREMENT PRIMARY KEY,
+Nome_Turma VARCHAR(100) NOT NULL,
+ID_Professor INT, 
+FOREIGN KEY (ID_Professor) REFERENCES Professor(ID_Professor)
+ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+INSERT INTO Turma (Nome_Turma)
+VALUES
+('Tigrinhos'),
+('Panteras'),
+('Gaviões');
+
+CREATE TABLE IF NOT EXISTS Nota (
+ID_Nota INT AUTO_INCREMENT PRIMARY KEY,
+ID_Alunos INT,
+FOREIGN KEY (ID_Alunos) REFERENCES Aluno(ID_Alunos)
+ON DELETE SET NULL ON UPDATE CASCADE,
+ID_Turma INT,
+FOREIGN KEY (ID_Turma) REFERENCES Turma(ID_Turma)
+ON DELETE SET NULL ON UPDATE CASCADE,
+Nota_Aluno DECIMAL(2, 2)
+);
+
+INSERT INTO Nota (Nota_Aluno)
+VALUES
+('10'),
+('09'),
+('03');
+
+SELECT * FROM Alunos;     hhsdha\ubyyyyygg                                                                                                                                                                                                                                                                                                        hhhhh
